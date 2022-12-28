@@ -1,0 +1,25 @@
+@import "../../../sassStyles/mixins";
+
+.colorFilter-form {
+  height: 10rem;
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.colorFilter-container {
+    @include flex-container(row);
+    font-size: 1.5rem;
+    font-weight: 500;
+
+  & > input {
+    margin-right: 1rem;
+  }
+
+  & > input:hover,
+  & > label:hover,
+  &:hover {
+    cursor: pointer;
+  }
+}

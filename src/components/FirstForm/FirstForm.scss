@@ -1,0 +1,77 @@
+@import "../../sassStyles/mixins";
+
+.firstForm-container {
+  width: 100%;
+  height: 20rem;
+  @include flex-container(column);
+}
+
+.firstForm-heading {
+  font-size: 2.5rem;
+}
+
+.firstForm-form {
+  width: 100%;
+  margin-top: 2rem;
+  @include flex-container(column);
+}
+
+.firstForm-form--container {
+  @include flex-container(row);
+}
+
+.firstForm-input {
+  padding: 0.5rem 1rem;
+  font-size: 1.3rem;
+  transition: all 0.2s ease-in;
+
+  &:focus-visible {
+    outline: none;
+    background-color: #e2e2e2;
+  }
+}
+
+.firstForm-div--color {
+  margin-left: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: attr(data-color);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.firstForm-error--message {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.firstForm-button {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #505dce;
+  background: #3e58ca;
+  color: #e7e7e7;
+  transition: all 0.1s ease-in;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(2px);
+    backface-visibility: hidden;
+  }
+}

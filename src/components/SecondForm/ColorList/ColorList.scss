@@ -1,0 +1,106 @@
+@import "../../../sassStyles/mixins";
+
+.color-container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  &__heading {
+    margin-top: 2rem;
+    font-size: 1.7rem;
+  }
+}
+
+.color-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: fit-content;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  list-style: none;
+}
+
+.color-item {
+  @include flex-container(column);
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem;
+
+  & > .color-box {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    border: 1px solid #000;
+
+    &[data-color="red"] {
+      background-color: #ff0000;
+    }
+
+    &[data-color="green"] {
+      background-color: #00ff00;
+    }
+
+    &[data-color="blue"] {
+      background-color: #0000ff;
+    }
+
+    &[data-color="white"] {
+      background-color: #ffffff;
+    }
+
+    &[data-color="black"] {
+      background-color: #000000;
+    }
+
+    &[data-color]:hover {
+      cursor: default;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  & > .color-box:not([data-color]) {
+    &::before,
+    &::after {
+      transition: opacity 0.2s ease-in;
+      content: "";
+      position: absolute;
+      left: 50%;
+      height: 6rem;
+      width: 0.2rem;
+      background-color: #000;
+      opacity: 0;
+    }
+
+    &::before {
+      transform: rotate(45deg) translateX(-50%);
+    }
+
+    &::after {
+      transform: rotate(-45deg) translateX(10%);
+    }
+  }
+
+  &:hover > .color-box {
+    &::before,
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  & > .color-name {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+  }
+}

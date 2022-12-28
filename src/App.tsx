@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.scss";
+import FirstForm from "./components/FirstForm/FirstForm";
+import SecondForm from "./components/SecondForm/SecondForm";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  let storageData: string[] = JSON.parse(localStorage.getItem("colors")!);
+  const [colors, setColors] = useState<(string | null)[]>(
+    storageData ? storageData : []
   );
-}
+  const [update, setUpdate] = useState<boolean>(false);
+
+  useEffect(() => {
+    storageData = JSON.parse(localStorage.getItem("colors")!);
+  }, [update]);
+
+  const updateColorsList = (elements: (string | null)[]) => {
+    setColors(elements);
+    setUpdate(true);
+    setTimeout(() => {
+      setUpdate(false);
+    }, 100);
+  };
+
+  return (
+    <main className="App">
+      <FirstForm colors={colors} onUpdateColors={updateColorsList} />
+      <SecondForm
+        colors={colors}
+        isUpdate={update}
+        onUpdateColors={updateColorsList}
+      />
+    </main>
+  );
+};
 
 export default App;

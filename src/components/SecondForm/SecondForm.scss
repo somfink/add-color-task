@@ -1,0 +1,12 @@
+@import "../../sassStyles/mixins";
+
+.secondForm-container {
+  width: 100%;
+  min-height: 20rem;
+  @include flex-container(column);
+  margin-top: 2rem;
+}
+
+.secondForm-heading {
+  font-size: 2.5rem;
+}
